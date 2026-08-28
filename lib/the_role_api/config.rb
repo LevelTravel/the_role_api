@@ -9,14 +9,13 @@ module TheRole
 
   # Configuration class
   class Configuration
-    include ActiveSupport::Configurable
-    config_accessor :layout,
-                    :layout_title,
-                    :destroy_strategy,
-                    :default_user_role,
-                    :access_denied_method,
-                    :login_required_method,
-                    :first_user_should_be_admin
+    attr_accessor :layout,
+                  :layout_title,
+                  :destroy_strategy,
+                  :default_user_role,
+                  :access_denied_method,
+                  :login_required_method,
+                  :first_user_should_be_admin
   end
 
   configure do |config|
