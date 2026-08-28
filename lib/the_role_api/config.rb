@@ -1,3 +1,5 @@
+require 'active_support/core_ext/class/attribute'
+
 module TheRole
   def self.configure(&block)
     yield @config ||= TheRole::Configuration.new
@@ -9,13 +11,14 @@ module TheRole
 
   # Configuration class
   class Configuration
-    attr_accessor :layout,
-                  :layout_title,
-                  :destroy_strategy,
-                  :default_user_role,
-                  :access_denied_method,
-                  :login_required_method,
-                  :first_user_should_be_admin
+    class_attribute :layout,
+                    :layout_title,
+                    :destroy_strategy,
+                    :default_user_role,
+                    :access_denied_method,
+                    :login_required_method,
+                    :first_user_should_be_admin,
+                    instance_predicate: false
   end
 
   configure do |config|
